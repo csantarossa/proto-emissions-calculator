@@ -16,7 +16,7 @@ function App() {
 
   return (
     <div className="App h-screen w-full flex flex-col justify-center items-center">
-      <div className="h-[400px] w-[800px]  p-5 flex justify-evenly items-center">
+      <div className="h-[400px] w-fit gap-10 p-5 flex lg:flex-row flex-col justify-evenly items-center">
         <form
           onSubmit={handleCalculation}
           className="flex flex-col gap-5 h-[300px] w-[250px] p-5 rounded-lg bg-green-300 justify-between items-center"
