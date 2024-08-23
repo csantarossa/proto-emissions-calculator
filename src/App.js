@@ -1,4 +1,6 @@
 import { useState } from "react";
+import TruckImg from "./assets/box-car.png";
+import TrainImg from "./assets/train.png";
 
 function App() {
   const [distance, setDistance] = useState("");
@@ -16,14 +18,16 @@ function App() {
 
   return (
     <div className="App h-screen w-full flex flex-col justify-center items-center">
-      <div className="h-[400px] w-fit gap-10 p-5 flex lg:flex-row flex-col justify-evenly items-center">
+      <div className="h-fit w-fit gap-10 p-5 flex lg:flex-row flex-col justify-evenly items-center">
         <form
           onSubmit={handleCalculation}
-          className="flex flex-col gap-5 h-[300px] w-[250px] p-5 rounded-lg bg-green-300 justify-between items-center"
+          className="flex flex-col gap-5 h-[300px] w-[250px] p-5 rounded-lg bg-green-500 justify-between items-center"
         >
-          <h1 className="font-semibold text-xl">Emission Calculator</h1>
+          <h1 className="font-semibold text-xl text-white">
+            Emission Calculator
+          </h1>
           <div className="flex flex-col">
-            <label>Weight of Cargo</label>
+            <label className="text-white font-medium">Weight of Cargo</label>
             <input
               type="number"
               value={distance}
@@ -33,7 +37,7 @@ function App() {
           </div>
 
           <div className="flex flex-col">
-            <label>Distance</label>
+            <label className="text-white font-medium">Distance</label>
             <input
               type="number"
               value={weight}
@@ -43,7 +47,7 @@ function App() {
           </div>
           <div className="flex w-full justify-between items-center">
             <button
-              className="bg-green-500 p-2 rounded-md"
+              className="bg-green-700 text-white font-medium p-2 rounded-md"
               type="reset"
               onClick={() => {
                 setWeight("");
@@ -52,7 +56,9 @@ function App() {
             >
               Reset
             </button>
-            <button className="bg-white p-2 rounded-md w-fit">Calculate</button>
+            <button className="bg-white p-2 rounded-md w-fit font-medium">
+              Calculate
+            </button>
           </div>
         </form>
 
@@ -61,24 +67,26 @@ function App() {
           (railEmissions <= 0 && truckEmissions <= 0) ? (
             <p>Fill in form to begin calculation...</p>
           ) : (
-            <div>
+            <div className="flex flex-col gap-5">
               <p
-                className={`${
+                className={`flex justify-center items-center gap-3 ${
                   truckEmissions < railEmissions
                     ? "text-green-500"
                     : "text-red-500"
                 } font-semibold text-xl`}
               >
-                Road: {truckEmissions} CO2 / t-km
+                <img className="w-10" src={TruckImg} alt="" /> {truckEmissions}{" "}
+                CO2 / t-km
               </p>
               <p
-                className={`${
+                className={`flex justify-center items-center gap-3 ${
                   railEmissions < truckEmissions
                     ? "text-green-500"
                     : "text-red-500"
                 } font-semibold text-xl`}
               >
-                Rail: {railEmissions} CO2 / t-km
+                <img className="w-8" src={TrainImg} alt="" /> {railEmissions}{" "}
+                CO2 / t-km
               </p>
             </div>
           )}
